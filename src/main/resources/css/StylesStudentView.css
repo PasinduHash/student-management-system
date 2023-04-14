@@ -1,3 +1,6 @@
 .body{
     -fx-background-image: url("background.jpg");
 }
+.invalid{
+    -fx-border-color: red;
+}
