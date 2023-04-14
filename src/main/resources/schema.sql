@@ -3,12 +3,16 @@ CREATE TABLE IF NOT EXISTS Student (
     register_name VARCHAR(200) NOT NULL,
     full_name VARCHAR(500) NOT NULL,
     dob DATE NOT NULL,
-    class VARCHAR(5) NOT NULL,
+    grade VARCHAR(5) NOT NULL,
     address VARCHAR(300) NOT NULL,
     contact VARCHAR(15),
     guardian_name VARCHAR(200) NOT NULL,
-    guardian_occupation VARCHAR(100) NOT NULL,
-    guardian_contact VARCHAR(15) NOT NULL
+    guardian_occupation VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Picture (
+    student_id VARCHAR(20),
+    student_picture MEDIUMBLOB NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Teacher (
