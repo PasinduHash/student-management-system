@@ -19,6 +19,8 @@ public class AppInitializer extends Application {
     public void start(Stage primaryStage) throws IOException {
         Connection connection = DBConnection.getInstance().getConnection();
         primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/StudentView.fxml")).load()));
+        primaryStage.setMaximized(true);
+        primaryStage.setTitle("Teacher Details");
         primaryStage.show();
 
     }

@@ -1,201 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.StudentViewController">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" styleClass="body" stylesheets="@../css/StylesStudentView.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.StudentViewController">
    <children>
-      <StackPane prefHeight="150.0" prefWidth="200.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="725.0" layoutX="14.0" layoutY="93.0" opacity="0.86" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-arc-width: 30px; -fx-arc-height: 30px;" width="591.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="38.0" text="STUDENT DETAILS - ABC PRIMARY SCHOOL" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font name="FreeSans Bold" size="27.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblStudents" layoutX="645.0" layoutY="156.0" prefHeight="649.0" prefWidth="573.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="140.0">
+        <columns>
+          <TableColumn maxWidth="1.7976931348623157E308" prefWidth="81.0" text="ID" />
+            <TableColumn maxWidth="1.7976931348623157E308" prefWidth="88.0" text="CLASS" />
+          <TableColumn maxWidth="1.7976931348623157E308" prefWidth="197.0" text="STUDENT'S NAME" />
+            <TableColumn maxWidth="1.7976931348623157E308" prefWidth="268.0" text="CONTACT" />
+        </columns>
+      </TableView>
+      <VBox alignment="CENTER_RIGHT" layoutX="32.0" layoutY="295.0" spacing="10.0" AnchorPane.leftAnchor="32.0">
          <children>
-            <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
                <children>
-                  <ImageView fitHeight="835.0" fitWidth="1202.0" pickOnBounds="true" smooth="false" visible="false">
-                     <image>
-                        <Image url="@../images/background.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-               </children>
-            </Pane>
-            <AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-image: /images/background.png;" styleClass="body" stylesheets="@../css/StylesStudentView.css">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="725.0" layoutX="14.0" layoutY="93.0" opacity="0.86" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-arc-width: 30px; -fx-arc-height: 30px;" styleClass="wrapper" width="591.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="38.0" text="STUDENT MANAGEMENT SYSTEM" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                     <font>
-                        <Font name="FreeSans Bold" size="27.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="tblStudents" layoutX="645.0" layoutY="156.0" prefHeight="649.0" prefWidth="573.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="140.0">
-                    <columns>
-                      <TableColumn maxWidth="1.7976931348623157E308" prefWidth="81.0" text="ID" />
-                        <TableColumn maxWidth="1.7976931348623157E308" prefWidth="88.0" text="CLASS" />
-                      <TableColumn maxWidth="1.7976931348623157E308" prefWidth="197.0" text="STUDENT'S NAME" />
-                        <TableColumn maxWidth="1.7976931348623157E308" prefWidth="268.0" text="CONTACT" />
-                    </columns>
-                  </TableView>
-                  <VBox alignment="CENTER_RIGHT" layoutX="32.0" layoutY="295.0" spacing="10.0" AnchorPane.leftAnchor="32.0">
-                     <children>
-                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
-                           <children>
-                              <Label alignment="CENTER_RIGHT" text="STUDENT'S ID :">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtID" alignment="CENTER" editable="false" prefWidth="300.0" promptText="Auto Generated" style="-fx-border-color: #2d0565;">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" spacing="10.0">
-                           <children>
-                              <Label alignment="CENTER_RIGHT" text="STUDENT'S NAME :">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtName" prefWidth="300.0" promptText="A.B.C. Kasun Sampath" style="-fx-border-color: #2d0565;">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="240.0" spacing="10.0">
-                           <children>
-                              <Label alignment="CENTER_RIGHT" text="ADDRESS :">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextArea fx:id="txtAddress" prefHeight="100.0" prefWidth="300.0" promptText="Colombo Road, Chilaw" style="-fx-border-color: #2d0565;">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </TextArea>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="274.0" spacing="10.0">
-                           <children>
-                              <Label alignment="CENTER_RIGHT" text="FATHER'S NAME :">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtFatherName" prefWidth="300.0" promptText="A.B.C. XXXXXXXXXXXX" style="-fx-border-color: #2d0565;">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="308.0" spacing="10.0">
-                           <children>
-                              <Label alignment="CENTER_RIGHT" maxWidth="200.0" text="FATHER'S OCCUPATION :">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtFatherOccupation" alignment="BOTTOM_LEFT" prefWidth="300.0" promptText="Teaching" style="-fx-border-color: #2d0565;">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="342.0" spacing="10.0">
-                           <children>
-                              <Label alignment="CENTER_RIGHT" text="MOTHER'S NAME :">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtMotherName" prefWidth="300.0" promptText="A.B.C. XXXXXXXXXXXX" style="-fx-border-color: #2d0565;">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="376.0" spacing="10.0">
-                           <children>
-                              <Label alignment="CENTER_RIGHT" text="MOTHER'S OCCUPATION :">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtMotherOccupation" alignment="BOTTOM_LEFT" prefWidth="300.0" promptText="Housewife" style="-fx-border-color: #2d0565;">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="410.0" spacing="10.0">
-                           <children>
-                              <Label alignment="CENTER_RIGHT" text="CONTACT NUMBER :">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtContact" alignment="BOTTOM_LEFT" prefWidth="300.0" promptText="077-1234567" style="-fx-border-color: #2d0565;">
-                                 <font>
-                                    <Font name="FreeSans" size="16.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <TextField fx:id="txtSearch" alignment="CENTER" layoutX="810.0" layoutY="112.0" onKeyReleased="#txtSearchOnKeyReleased" prefHeight="30.0" prefWidth="573.0" promptText="Search" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <Pane layoutX="245.0" layoutY="121.0" style="-fx-border-color: #2d0565; -fx-background-color: white;">
-                     <children>
-                        <ImageView fx:id="imgpicture" fitHeight="150.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: #2d0565;" />
-                     </children>
-                  </Pane>
-                  <Label layoutX="84.0" layoutY="188.0" text="PROFILE PICTURE :">
+                  <Label alignment="CENTER_RIGHT" minWidth="220.0" text="STUDENT'S ID :">
                      <font>
                         <Font name="FreeSans" size="16.0" />
                      </font>
                   </Label>
-                  <VBox layoutX="404.0" layoutY="159.0" spacing="10.0">
-                     <children>
-                        <Button fx:id="btnBrowse" minWidth="100.0" mnemonicParsing="false" onAction="#btnBrowseOnAction" style="-fx-border-color: black; -fx-background-color: #2d0565;" text="BROWSE" textFill="WHITE" />
-                        <Button fx:id="btnClear" minWidth="100.0" mnemonicParsing="false" onAction="#btnClearOnAction" style="-fx-border-color: black; -fx-background-color: red;" text="CLEAR" textFill="WHITE" />
-                     </children>
-                  </VBox>
-                  <HBox layoutX="245.0" layoutY="693.0" spacing="10.0">
-                     <children>
-                        <Button fx:id="btnSave" minWidth="100.0" mnemonicParsing="false" onAction="#btnSaveOnAction" style="-fx-border-color: black; -fx-background-color: #2d0565;" text="SAVE" textFill="WHITE" />
-                        <Button fx:id="btnDelete" minWidth="100.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-border-color: black; -fx-background-color: red;" text="DELETE" textFill="WHITE" />
-                     </children>
-                  </HBox>
+                  <TextField fx:id="txtID" alignment="CENTER" editable="false" minHeight="30.0" prefWidth="300.0" promptText="Auto Generated" style="-fx-border-color: #2d0565;">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </TextField>
                </children>
-            </AnchorPane>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" minWidth="220.0" text="STUDENT'S FULL NAME :">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="txtFullName" prefHeight="50.0" prefWidth="300.0" promptText="Aaaa Bbb Ccc Kasun Sampath" style="-fx-border-color: #2d0565;">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="50.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" minWidth="220.0" text="NAME WITH INITIALS :">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNameWithInitials" minHeight="30.0" prefWidth="300.0" promptText="A.B.C.K. Sampath" style="-fx-border-color: #2d0565;">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="110.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" minWidth="220.0" text="CLASS :">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtClass" prefWidth="300.0" promptText="5-B" style="-fx-border-color: #2d0565;">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="150.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" minWidth="220.0" text="DATE OF BIRTH :">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="txtDateOfBirth" minHeight="30.0" prefWidth="300.0" promptText="12/12/2012" style="-fx-border-color: #2d0565;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="240.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" minWidth="220.0" text="ADDRESS :">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="txtAddress" prefHeight="50.0" prefWidth="300.0" promptText="Colombo Road, Chilaw" style="-fx-border-color: #2d0565;">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="274.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" minWidth="220.0" text="GUARDIAN'S NAME :">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtGuardianName" minHeight="30.0" prefWidth="300.0" promptText="A.B.C. XXXXXXXXXXXX" style="-fx-border-color: #2d0565;">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="308.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" maxWidth="200.0" minWidth="220.0" text="GUARDIAN'S OCCUPATION :">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtGuardianOccupation" alignment="BOTTOM_LEFT" minHeight="30.0" prefWidth="300.0" promptText="Teaching" style="-fx-border-color: #2d0565;">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="410.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" minWidth="220.0" text="CONTACT NUMBER :">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtContact" alignment="BOTTOM_LEFT" minHeight="30.0" prefWidth="300.0" promptText="077-1234567" style="-fx-border-color: #2d0565;">
+                     <font>
+                        <Font name="FreeSans" size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
          </children>
-      </StackPane>
+      </VBox>
+      <TextField fx:id="txtSearch" alignment="CENTER" layoutX="810.0" layoutY="112.0" onKeyReleased="#txtSearchOnKeyReleased" prefHeight="30.0" prefWidth="573.0" promptText="Search" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Pane layoutX="262.0" layoutY="121.0" style="-fx-border-color: #2d0565; -fx-background-color: white;">
+         <children>
+            <ImageView fx:id="imgPicture" fitHeight="150.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: #2d0565;" />
+         </children>
+      </Pane>
+      <Label layoutX="105.0" layoutY="188.0" text="PROFILE PICTURE :">
+         <font>
+            <Font name="FreeSans" size="16.0" />
+         </font>
+      </Label>
+      <VBox layoutX="431.0" layoutY="166.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnBrowse" minWidth="100.0" mnemonicParsing="false" onAction="#btnBrowseOnAction" style="-fx-border-color: black; -fx-background-color: #2d0565;" text="BROWSE" textFill="WHITE" />
+            <Button fx:id="btnClear" minWidth="100.0" mnemonicParsing="false" onAction="#btnClearOnAction" style="-fx-border-color: black; -fx-background-color: red;" text="CLEAR" textFill="WHITE" />
+         </children>
+      </VBox>
+      <HBox layoutX="262.0" layoutY="697.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnSave" minWidth="100.0" mnemonicParsing="false" onAction="#btnSaveOnAction" style="-fx-border-color: black; -fx-background-color: #2d0565;" text="SAVE" textFill="WHITE" />
+            <Button fx:id="btnDelete" minWidth="100.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-border-color: black; -fx-background-color: red;" text="DELETE" textFill="WHITE" />
+         </children>
+      </HBox>
    </children>
-</StackPane>
+</AnchorPane>

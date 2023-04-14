@@ -3,6 +3,7 @@ package lk.ijse.dep10.students.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -25,7 +26,7 @@ public class StudentViewController {
     private Button btnSave;
 
     @FXML
-    private ImageView imgpicture;
+    private ImageView imgPicture;
 
     @FXML
     private AnchorPane root;
@@ -37,25 +38,28 @@ public class StudentViewController {
     private TextArea txtAddress;
 
     @FXML
+    private TextField txtClass;
+
+    @FXML
     private TextField txtContact;
 
     @FXML
-    private TextField txtFatherName;
+    private DatePicker txtDateOfBirth;
 
     @FXML
-    private TextField txtFatherOccupation;
+    private TextArea txtFullName;
+
+    @FXML
+    private TextField txtGuardianName;
+
+    @FXML
+    private TextField txtGuardianOccupation;
 
     @FXML
     private TextField txtID;
 
     @FXML
-    private TextField txtMotherName;
-
-    @FXML
-    private TextField txtMotherOccupation;
-
-    @FXML
-    private TextField txtName;
+    private TextField txtNameWithInitials;
 
     @FXML
     private TextField txtSearch;
