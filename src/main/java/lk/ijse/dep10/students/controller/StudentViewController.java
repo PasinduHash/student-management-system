@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class StudentViewController {
 
@@ -88,6 +89,7 @@ public class StudentViewController {
         tblStudents.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("contact"));
 
         loadStudents();
+        btnNewStudent.fire();
     }
 
     private void loadStudents() {
@@ -151,12 +153,14 @@ public class StudentViewController {
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
 
+
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
+        System.out.println("top at save");
         if (!isDataValid()) return;
-
+        System.out.println("datavalid");
         Student newStudent = new Student(txtID.getText(),txtNameWithInitials.getText(),txtFullName.getText(),txtDateOfBirth.getValue(),txtClass.getText(), txtAddress.getText(), txtContact.getText(), txtGuardianName.getText(), txtGuardianOccupation.getText(),imgPicture.getImage());
         tblStudents.getItems().add(newStudent);
         Connection connection = DBConnection.getInstance().getConnection();
@@ -207,7 +211,77 @@ public class StudentViewController {
     }
 
     private boolean isDataValid() {
-        return true;
+        System.out.println("top at data validation");
+        boolean dataValid = true;
+
+        txtFullName.getStyleClass().remove("invalid");
+        txtNameWithInitials.getStyleClass().remove("invalid");
+        txtDateOfBirth.getStyleClass().remove("invalid");
+        txtClass.getStyleClass().remove("invalid");
+        txtContact.getStyleClass().remove("invalid");
+        txtAddress.getStyleClass().remove("invalid");
+        txtGuardianName.getStyleClass().remove("invalid");
+        txtGuardianOccupation.getStyleClass().remove("invalid");
+        if(!txtContact.getText().matches("\\d{3}-\\d{7}")){
+            dataValid = false;
+            txtContact.requestFocus();
+            txtContact.getStyleClass().add("invalid");
+        }
+
+
+
+        System.out.println("before date check");
+        if(txtDateOfBirth.getValue()==null){
+            dataValid = false;
+            txtDateOfBirth.requestFocus();
+            txtDateOfBirth.getStyleClass().add("invalid");
+        }else {
+            System.out.println("inside else");
+            try {
+                System.out.println("before");
+                LocalDate dob = txtDateOfBirth.getValue();
+                System.out.println("after");
+            } catch (Exception e) {
+                dataValid = false;
+                System.out.println("in");
+                txtDateOfBirth.requestFocus();
+                txtDateOfBirth.getStyleClass().add("invalid");
+            }
+        }
+
+        if(txtAddress.getText().length()<3){
+            System.out.println(txtAddress.getText());
+            dataValid = false;
+            txtAddress.requestFocus();
+            txtAddress.getStyleClass().add("invalid");
+        }
+        if(!txtGuardianName.getText().matches("[A-Z a-z]{3,}")){
+            dataValid = false;
+            txtGuardianName.requestFocus();
+            txtGuardianName.getStyleClass().add("invalid");
+        }
+        if(!txtGuardianOccupation.getText().matches("[A-Z a-z]{3,}")){
+            dataValid = false;
+            txtGuardianOccupation.requestFocus();
+            txtGuardianOccupation.getStyleClass().add("invalid");
+        }
+        if(!txtClass.getText().matches("([1-9]|1[1-3])-[A-F]")){
+            dataValid = false;
+            txtClass.requestFocus();
+            txtClass.getStyleClass().add("invalid");
+        }
+        if(!txtNameWithInitials.getText().matches("[A-Z .a-z]{3,}+")){
+            dataValid = false;
+            txtNameWithInitials.requestFocus();
+            txtNameWithInitials.getStyleClass().add("invalid");
+        }
+        if(!txtFullName.getText().matches("[A-Z a-z]{3,}")){
+            dataValid = false;
+            txtFullName.requestFocus();
+            txtFullName.getStyleClass().add("invalid");
+        }
+
+        return dataValid;
     }
 
     @FXML
@@ -216,6 +290,17 @@ public class StudentViewController {
     }
 
     public void btnNewStudentOnAction(ActionEvent actionEvent) {
+        btnBrowse.setDisable(false);
+        btnSave.setDisable(false);
+        txtNameWithInitials.setDisable(false);
+        txtFullName.setDisable(false);
+        txtDateOfBirth.setDisable(false);
+        txtClass.setDisable(false);
+        txtAddress.setDisable(false);
+        txtGuardianName.setDisable(false);
+        txtGuardianOccupation.setDisable(false);
+        txtContact.setDisable(false);
+
         String newStudentId = "S001";
         if (tblStudents.getItems().size()!=0) {
             String lastStudentId = (tblStudents.getItems().get(tblStudents.getItems().size() - 1).getId().substring(1));
