@@ -22,4 +22,6 @@ public class Student implements Serializable {
     private String guardianName;
     private String guardianOccupation;
     private Image profilePicture;
+
 }
+

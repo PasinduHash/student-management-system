@@ -90,6 +90,30 @@ public class StudentViewController {
 
         loadStudents();
         btnNewStudent.fire();
+
+        tblStudents.getSelectionModel().selectedItemProperty().addListener((ov,prev,current)->{
+            if (current != null) {
+                btnDelete.setDisable(false);
+                txtID.setText(current.getId());
+                txtFullName.setText(current.getFullName());
+                txtNameWithInitials.setText(current.getNameWithInitials());
+                txtClass.setText(current.getGrade());
+                txtDateOfBirth.setValue(current.getDob());
+                txtGuardianName.setText(current.getGuardianName());
+                txtGuardianOccupation.setText(current.getGuardianOccupation());
+                txtContact.setText(current.getContact());
+                txtAddress.setText(current.getAddress());
+
+                if (current.getProfilePicture() != null) {
+                    Image picture = current.getProfilePicture();
+                    imgPicture.setImage(picture);
+                } else {
+                    Image image = new Image("/image/empty-photo.png");
+                    imgPicture.setImage(image);
+                }
+            }
+
+        });
     }
 
     private void loadStudents() {
@@ -152,8 +176,35 @@ public class StudentViewController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        Student selectedStudent = tblStudents.getSelectionModel().getSelectedItem();
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+            PreparedStatement statement1 = connection.prepareStatement("DELETE FROM Picture WHERE student_id = ?");
+            statement1.setString(1, selectedStudent.getId());
+            PreparedStatement statement2 = connection.prepareStatement("DELETE FROM Student WHERE student_id = ?");
+            statement2.setString(1, selectedStudent.getId());
 
+            statement1.executeUpdate();
+            statement2.executeUpdate();
 
+            tblStudents.getItems().remove(tblStudents.getSelectionModel().getSelectedIndex());
+//            btnNewStudent.fire();
+            connection.commit();
+
+        } catch (Throwable e) {
+            try {
+                connection.rollback();
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+            }
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -265,7 +316,7 @@ public class StudentViewController {
             txtGuardianOccupation.requestFocus();
             txtGuardianOccupation.getStyleClass().add("invalid");
         }
-        if(!txtClass.getText().matches("([1-9]|1[1-3])-[A-F]")){
+        if(!txtClass.getText().matches("([1-9]|1[0-3])-[A-F]")){
             dataValid = false;
             txtClass.requestFocus();
             txtClass.getStyleClass().add("invalid");
