@@ -1,5 +1,6 @@
 package lk.ijse.dep10.students.controller;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,9 +17,15 @@ import javafx.stage.FileChooser;
 import lk.ijse.dep10.students.db.DBConnection;
 import lk.ijse.dep10.students.model.Student;
 
+import javax.imageio.ImageIO;
+import javax.sql.rowset.serial.SerialBlob;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.*;
+import java.time.LocalDate;
 
 public class StudentViewController {
 
@@ -33,6 +40,8 @@ public class StudentViewController {
 
     @FXML
     private Button btnSave;
+    @FXML
+    private Button btnNewStudent;
 
     @FXML
     private ImageView imgPicture;
@@ -91,13 +100,12 @@ public class StudentViewController {
                 String id = rst.getString("student_id");
                 String nameWithInitials = rst.getString("register_name");
                 String fullName = rst.getString("full_name");
-                Date dob = rst.getDate("dob");
+                LocalDate dob = rst.getDate("dob").toLocalDate();
                 String grade = rst.getString("grade");
                 String address = rst.getString("address");
                 String contact = rst.getString("contact");
                 String guardianName = rst.getString("guardian_name");
                 String guardianOccupation = rst.getString("guardian_occupation");
-                System.out.println("midddle");
                 Image picture = null;
                 stm2.setString(1,id);
                 ResultSet rstPicture = stm2.executeQuery();
@@ -110,8 +118,6 @@ public class StudentViewController {
                 Student student = new Student(id, nameWithInitials, fullName, dob, grade, address, contact, guardianName, guardianOccupation, picture);
                 tblStudents.getItems().add(student);
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -149,15 +155,58 @@ public class StudentViewController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        if(!dataValid()) return;
-        System.out.println("correct");
+        if (!isDataValid()) return;
 
+        Student newStudent = new Student(txtID.getText(),txtNameWithInitials.getText(),txtFullName.getText(),txtDateOfBirth.getValue(),txtClass.getText(), txtAddress.getText(), txtContact.getText(), txtGuardianName.getText(), txtGuardianOccupation.getText(),imgPicture.getImage());
+        tblStudents.getItems().add(newStudent);
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+            PreparedStatement preparedStatement = connection.prepareStatement
+                    ("INSERT INTO Student(student_id, register_name, full_name, dob, grade, address, contact, guardian_name, guardian_occupation) VALUES (?,?,?,?,?,?,?,?,?)");
+            PreparedStatement preparedStatementPicture = connection.prepareStatement("INSERT INTO Picture(student_id, student_picture) VALUES (?,?)");
 
+            preparedStatement.setString(1,txtID.getText());
+            preparedStatement.setString(2,txtNameWithInitials.getText());
+            preparedStatement.setString(3,txtFullName.getText());
+            preparedStatement.setString(4, String.valueOf(txtDateOfBirth.getValue()));
+            preparedStatement.setString(5,txtClass.getText());
+            preparedStatement.setString(6,txtAddress.getText());
+            preparedStatement.setString(7,txtContact.getText());
+            preparedStatement.setString(8,txtGuardianName.getText());
+            preparedStatement.setString(9,txtGuardianOccupation.getText());
+            preparedStatement.executeUpdate();
 
-
+            Image image = imgPicture.getImage();
+            BufferedImage bi = SwingFXUtils.fromFXImage(image, null);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ImageIO.write(bi,"png",bos);
+            byte[] bytes = bos.toByteArray();
+            Blob pictureBlob = new SerialBlob(bytes);
+            preparedStatementPicture.setString(1,txtID.getText());
+            preparedStatementPicture.setBlob(2,pictureBlob);
+            preparedStatementPicture.executeUpdate();
+            btnNewStudent.fire();
+            connection.commit();
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                e.printStackTrace();
+            }
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    private boolean dataValid() {
+    private boolean isDataValid() {
         return true;
     }
 
@@ -167,7 +216,6 @@ public class StudentViewController {
     }
 
     public void btnNewStudentOnAction(ActionEvent actionEvent) {
-        System.out.println(tblStudents.getItems());
         String newStudentId = "S001";
         if (tblStudents.getItems().size()!=0) {
             String lastStudentId = (tblStudents.getItems().get(tblStudents.getItems().size() - 1).getId().substring(1));
