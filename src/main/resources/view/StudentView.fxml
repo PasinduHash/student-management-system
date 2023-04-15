@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" styleClass="body" stylesheets="@../css/StylesStudentView.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.StudentViewController">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" styleClass="body" stylesheets="@../css/Styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.StudentViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="692.0" layoutX="10.0" layoutY="134.0" opacity="0.86" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-arc-width: 30px; -fx-arc-height: 30px;" width="591.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="130.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="63.0" text="STUDENT DETAILS - ABC PRIMARY SCHOOL" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
@@ -55,7 +55,7 @@
                         <Font name="FreeSans" size="16.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="txtFullName" prefHeight="50.0" prefWidth="300.0" promptText="Aaaa Bbb Ccc Kasun Sampath" style="-fx-border-color: #2d0565;">
+                  <TextArea fx:id="txtFullName" disable="true" prefHeight="50.0" prefWidth="300.0" promptText="Aaaa Bbb Ccc Kasun Sampath" style="-fx-border-color: #2d0565;">
                      <font>
                         <Font name="FreeSans" size="16.0" />
                      </font>
@@ -69,7 +69,7 @@
                         <Font name="FreeSans" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtNameWithInitials" minHeight="30.0" prefWidth="300.0" promptText="A.B.C.K. Sampath" style="-fx-border-color: #2d0565;">
+                  <TextField fx:id="txtNameWithInitials" disable="true" minHeight="30.0" prefWidth="300.0" promptText="A.B.C.K. Sampath" style="-fx-border-color: #2d0565;">
                      <font>
                         <Font name="FreeSans" size="16.0" />
                      </font>
@@ -83,7 +83,7 @@
                         <Font name="FreeSans" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtClass" prefWidth="300.0" promptText="5-B" style="-fx-border-color: #2d0565;">
+                  <TextField fx:id="txtClass" disable="true" prefWidth="300.0" promptText="5-B" style="-fx-border-color: #2d0565;">
                      <font>
                         <Font name="FreeSans" size="16.0" />
                      </font>
@@ -97,7 +97,7 @@
                         <Font name="FreeSans" size="16.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="txtDateOfBirth" minHeight="30.0" prefWidth="300.0" promptText="12/12/2012" style="-fx-border-color: #2d0565;" />
+                  <DatePicker fx:id="txtDateOfBirth" disable="true" minHeight="30.0" prefWidth="300.0" promptText="12/12/2012" style="-fx-border-color: #2d0565;" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="240.0" spacing="10.0">
@@ -107,7 +107,7 @@
                         <Font name="FreeSans" size="16.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="txtAddress" prefHeight="50.0" prefWidth="300.0" promptText="Colombo Road, Chilaw" style="-fx-border-color: #2d0565;">
+                  <TextArea fx:id="txtAddress" disable="true" prefHeight="50.0" prefWidth="300.0" promptText="Colombo Road, Chilaw" style="-fx-border-color: #2d0565;">
                      <font>
                         <Font name="FreeSans" size="16.0" />
                      </font>
@@ -121,7 +121,7 @@
                         <Font name="FreeSans" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtGuardianName" minHeight="30.0" prefWidth="300.0" promptText="A.B.C. XXXXXXXXXXXX" style="-fx-border-color: #2d0565;">
+                  <TextField fx:id="txtGuardianName" disable="true" minHeight="30.0" prefWidth="300.0" promptText="A.B.C. XXXXXXXXXXXX" style="-fx-border-color: #2d0565;">
                      <font>
                         <Font name="FreeSans" size="16.0" />
                      </font>
@@ -135,7 +135,7 @@
                         <Font name="FreeSans" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtGuardianOccupation" alignment="BOTTOM_LEFT" minHeight="30.0" prefWidth="300.0" promptText="Teaching" style="-fx-border-color: #2d0565;">
+                  <TextField fx:id="txtGuardianOccupation" alignment="BOTTOM_LEFT" disable="true" minHeight="30.0" prefWidth="300.0" promptText="Teaching" style="-fx-border-color: #2d0565;">
                      <font>
                         <Font name="FreeSans" size="16.0" />
                      </font>
@@ -149,7 +149,7 @@
                         <Font name="FreeSans" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtContact" alignment="BOTTOM_LEFT" minHeight="30.0" prefWidth="300.0" promptText="077-1234567" style="-fx-border-color: #2d0565;">
+                  <TextField fx:id="txtContact" alignment="BOTTOM_LEFT" disable="true" minHeight="30.0" prefWidth="300.0" promptText="077-1234567" style="-fx-border-color: #2d0565;">
                      <font>
                         <Font name="FreeSans" size="16.0" />
                      </font>
@@ -163,9 +163,9 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <Pane layoutX="262.0" layoutY="167.0" prefWidth="140.0">
+      <Pane layoutX="262.0" layoutY="167.0">
          <children>
-            <ImageView fx:id="imgPicture" fitHeight="145.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgPicture" fitHeight="142.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/empty-photo.png" />
                </image>
@@ -179,13 +179,13 @@
       </Label>
       <VBox layoutX="431.0" layoutY="207.0" spacing="10.0">
          <children>
-            <Button fx:id="btnBrowse" minWidth="100.0" mnemonicParsing="false" onAction="#btnBrowseOnAction" style="-fx-border-color: black; -fx-background-color: #2d0565;" text="BROWSE" textFill="WHITE" />
+            <Button fx:id="btnBrowse" disable="true" minWidth="100.0" mnemonicParsing="false" onAction="#btnBrowseOnAction" style="-fx-border-color: black; -fx-background-color: #2d0565;" text="BROWSE" textFill="WHITE" />
             <Button fx:id="btnClear" disable="true" minWidth="100.0" mnemonicParsing="false" onAction="#btnClearOnAction" style="-fx-border-color: black; -fx-background-color: red;" text="CLEAR" textFill="WHITE" />
          </children>
       </VBox>
       <HBox layoutX="262.0" layoutY="722.0" spacing="10.0">
          <children>
-            <Button fx:id="btnSave" defaultButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btnSaveOnAction" style="-fx-border-color: black; -fx-background-color: #2d0565;" text="SAVE" textFill="WHITE" />
+            <Button fx:id="btnSave" defaultButton="true" disable="true" minWidth="100.0" mnemonicParsing="false" onAction="#btnSaveOnAction" style="-fx-border-color: black; -fx-background-color: #2d0565;" text="SAVE" textFill="WHITE" />
             <Button fx:id="btnDelete" disable="true" minWidth="100.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-border-color: black; -fx-background-color: red;" text="DELETE" textFill="WHITE" />
          </children>
       </HBox>
