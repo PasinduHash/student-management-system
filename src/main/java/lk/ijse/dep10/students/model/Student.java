@@ -7,6 +7,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @Data
@@ -14,7 +15,7 @@ public class Student implements Serializable {
     private String id;
     private String nameWithInitials;
     private String fullName;
-    private Date dob;
+    private LocalDate dob;
     private String grade;
     private String address;
     private String contact;
