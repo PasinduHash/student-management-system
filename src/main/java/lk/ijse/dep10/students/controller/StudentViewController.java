@@ -1,5 +1,6 @@
 package lk.ijse.dep10.students.controller;
 
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -107,6 +108,7 @@ public class StudentViewController {
                 if (current.getProfilePicture() != null) {
                     Image picture = current.getProfilePicture();
                     imgPicture.setImage(picture);
+                    btnClear.setDisable(false);
                 } else {
                     Image image = new Image("/image/empty-photo.png");
                     imgPicture.setImage(image);
@@ -114,6 +116,51 @@ public class StudentViewController {
             }
 
         });
+
+        txtSearch.textProperty().addListener((ov,prev,current)->{
+            Connection connection = DBConnection.getInstance().getConnection();
+            try {
+                Statement stm = connection.createStatement();
+                String sql = "SELECT * FROM Student WHERE Student.full_name LIKE '%1$s' OR Student.student_id LIKE '%1$s' OR Student.grade LIKE '%1$s' OR Student.guardian_name LIKE '%1$s' OR Student.guardian_occupation LIKE '%1$s' OR Student.register_name LIKE '%1$s'";
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Picture WHERE Picture.student_id = ?");
+                sql = String.format(sql,"%"+current+"%");
+                ResultSet rst = stm.executeQuery(sql);
+
+                ObservableList<Student> studentList = tblStudents.getItems();
+                studentList.clear();
+                while (rst.next()){
+                    String id = rst.getString("student_id");
+                    String nameWithInitials = rst.getString("register_name");
+                    String fullName = rst.getString("full_name");
+                    LocalDate dob = rst.getDate("dob").toLocalDate();
+                    String grade = rst.getString("grade");
+                    String address = rst.getString("address");
+                    String contact = rst.getString("contact");
+                    String guardianName = rst.getString("guardian_name");
+                    String guardianOccupation = rst.getString("guardian_occupation");
+                    Image image = new Image("/image/empty-photo.png");
+
+                    preparedStatement.setString(1,id);
+                    ResultSet rstPicture = preparedStatement.executeQuery();
+
+                    if (rstPicture.next()) {
+                        Blob picture = rstPicture.getBlob("student_picture");
+                        BufferedImage bi = ImageIO.read(picture.getBinaryStream());
+                        image = SwingFXUtils.toFXImage(bi, null);
+                    }
+
+
+//                    ImageView imageView = new ImageView(image);
+                    Student newStudent = new Student(id, nameWithInitials, fullName, dob, grade, address, contact, guardianName, guardianOccupation, image);
+                    studentList.add(newStudent);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
     }
 
     private void loadStudents() {
@@ -189,7 +236,6 @@ public class StudentViewController {
             statement2.executeUpdate();
 
             tblStudents.getItems().remove(tblStudents.getSelectionModel().getSelectedIndex());
-//            btnNewStudent.fire();
             connection.commit();
 
         } catch (Throwable e) {
@@ -217,6 +263,10 @@ public class StudentViewController {
         Connection connection = DBConnection.getInstance().getConnection();
         try {
             connection.setAutoCommit(false);
+            if(!tblStudents.getSelectionModel().isEmpty()){
+                btnDelete.fire();
+                connection.setAutoCommit(false);
+            }
             PreparedStatement preparedStatement = connection.prepareStatement
                     ("INSERT INTO Student(student_id, register_name, full_name, dob, grade, address, contact, guardian_name, guardian_occupation) VALUES (?,?,?,?,?,?,?,?,?)");
             PreparedStatement preparedStatementPicture = connection.prepareStatement("INSERT INTO Picture(student_id, student_picture) VALUES (?,?)");
