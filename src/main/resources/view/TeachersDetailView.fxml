@@ -46,7 +46,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtID" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtID" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Auto Generated ID" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -56,7 +56,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: A.B.C. Saman" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -66,7 +66,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtClass" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtClass" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: 1-A" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -76,7 +76,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtSubject" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtSubject" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: Maths" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -96,7 +96,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtContact" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtContact" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: 07X-XXXXXXX" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -177,13 +177,13 @@
                      </VBox.margin>
                   </Label>
                   <TextField fx:id="txtUserName" />
-                  <Label text="Passsword:">
+                  <Label text="Password:">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
                   <PasswordField fx:id="pwdPassword" />
-                  <Button fx:id="btnChange" mnemonicParsing="false" onAction="#btnChangeOnAction" text="Change User Nmae &amp; Password" />
+                  <Button fx:id="btnChange" mnemonicParsing="false" onAction="#btnChangeOnAction" text="Change User Name &amp; Password" />
                   <HBox spacing="40.0">
                      <children>
                         <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="24.0" prefWidth="90.0" text="SAVE" />
