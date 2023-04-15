@@ -1,10 +1,14 @@
 package lk.ijse.dep10.students.model;
 
 import javafx.scene.image.ImageView;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
+@AllArgsConstructor
+@Data
 public class Teacher implements Serializable {
     private int id;
     private String name;
