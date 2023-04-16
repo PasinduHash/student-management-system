@@ -10,9 +10,8 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Data
 public class Teacher implements Serializable {
-    private int id;
+    private String id;
     private String name;
-    private String address;
     private String grade;
     private ArrayList<String> subjectList = new ArrayList<>();
     private ArrayList<String> contactList = new ArrayList<>();
