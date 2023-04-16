@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.TeachersDetailViewController">
    <children>
       <HBox layoutX="44.953125" layoutY="44.0" spacing="50.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="45.0">
@@ -46,7 +45,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtID" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Auto Generated ID" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtID" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -56,7 +55,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: A.B.C. Saman" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtName" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -66,7 +65,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtClass" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: 1-A" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtClass" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -76,7 +75,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtSubject" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: Maths" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtSubject" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -96,7 +95,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtContact" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: 07X-XXXXXXX" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtContact" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -153,41 +152,50 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox spacing="20.0">
+            <VBox prefHeight="968.0" prefWidth="251.0" spacing="20.0">
                <children>
                   <StackPane style="-fx-background-color: LIGHTGRAY; -fx-border-color: BLACK;">
                      <children>
                         <ImageView fx:id="imgPicture" fitHeight="200.0" fitWidth="218.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </StackPane>
-                  <Button fx:id="btnAddSubject" mnemonicParsing="false" onAction="#btnAddSubjectOnAction" prefHeight="24.0" prefWidth="123.0" text="Add Subject" />
-                  <Button fx:id="btnDeleteSubject" mnemonicParsing="false" onAction="#btnDeleteSubjectOnAction" prefHeight="24.0" prefWidth="123.0" text="Delete Subject" />
-                  <Button fx:id="btnAddContact" mnemonicParsing="false" onAction="#btnAddContactOnAction" prefHeight="24.0" prefWidth="123.0" text="Add Contact">
+                  <HBox spacing="30.0">
+                     <children>
+                        <Button fx:id="btnBrowseImage" mnemonicParsing="false" onAction="#btnBrowseImageOnAction" text="Browse Image" />
+                        <Button fx:id="btnDeleteImage" mnemonicParsing="false" onAction="#btnDeleteImageOnAction" text="Delete Image" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnAddSubject" disable="true" mnemonicParsing="false" onAction="#btnAddSubjectOnAction" prefHeight="24.0" prefWidth="123.0" text="Add Subject">
                      <VBox.margin>
-                        <Insets top="45.0" />
+                        <Insets top="30.0" />
+                     </VBox.margin></Button>
+                  <Button fx:id="btnDeleteSubject" disable="true" mnemonicParsing="false" onAction="#btnDeleteSubjectOnAction" prefHeight="24.0" prefWidth="123.0" text="Delete Subject" />
+                  <Button fx:id="btnAddContact" disable="true" mnemonicParsing="false" onAction="#btnAddContactOnAction" prefHeight="24.0" prefWidth="123.0" text="Add Contact">
+                     <VBox.margin>
+                        <Insets top="65.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="btnDeleteContact" mnemonicParsing="false" onAction="#btnDeleteContact" prefHeight="24.0" prefWidth="123.0" text="Delete Contact" />
+                  <Button fx:id="btnDeleteContact" disable="true" mnemonicParsing="false" onAction="#btnDeleteContact" prefHeight="24.0" prefWidth="123.0" text="Delete Contact" />
                   <Label text="User Name:">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="240.0" />
+                        <Insets top="210.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtUserName" />
+                  <TextField fx:id="txtUserName" disable="true" />
                   <Label text="Password:">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="pwdPassword" />
-                  <Button fx:id="btnChange" mnemonicParsing="false" onAction="#btnChangeOnAction" text="Change User Name &amp; Password" />
+                  <PasswordField fx:id="pwdPassword" disable="true" />
+                  <Button fx:id="btnChange" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#btnChangeOnAction" text="Change User Name &amp; Password" />
                   <HBox spacing="40.0">
                      <children>
-                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="24.0" prefWidth="90.0" text="SAVE" />
-                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="24.0" prefWidth="90.0" text="DELETE" />
+                        <Button fx:id="btnSave" disable="true" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="24.0" prefWidth="90.0" text="SAVE" />
+                        <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="24.0" prefWidth="90.0" text="DELETE" />
                      </children>
                   </HBox>
                </children>
