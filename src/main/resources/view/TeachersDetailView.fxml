@@ -13,10 +13,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.TeachersDetailViewController">
+=======
+<AnchorPane prefHeight="1000.0" prefWidth="1200.0" styleClass="body" stylesheets="@../css/Styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.TeachersDetailViewController">
+>>>>>>> origin
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="562.0" layoutX="44.0" layoutY="123.0" opacity="0.86" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-arc-width: 30px; -fx-arc-height: 30px;" width="858.0" />
       <HBox layoutX="44.953125" layoutY="44.0" spacing="50.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="45.0">
          <children>
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0" HBox.hgrow="ALWAYS">
@@ -28,7 +34,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ABC - Primary School Teachers Details" HBox.hgrow="ALWAYS">
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ABC - Primary School Teachers Details" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold Italic" size="24.0" />
                            </font>
@@ -45,7 +51,11 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+<<<<<<< HEAD
                         <TextField fx:id="txtID" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+=======
+                        <TextField fx:id="txtID" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Auto Generated ID" style="-fx-border-color: #2d0565;" HBox.hgrow="ALWAYS" />
+>>>>>>> origin
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -55,7 +65,11 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+<<<<<<< HEAD
                         <TextField fx:id="txtName" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+=======
+                        <TextField fx:id="txtName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: A.B.C. Saman" style="-fx-border-color: #2d0565;" HBox.hgrow="ALWAYS" />
+>>>>>>> origin
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -65,7 +79,11 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+<<<<<<< HEAD
                         <TextField fx:id="txtClass" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+=======
+                        <TextField fx:id="txtClass" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: 1-A" style="-fx-border-color: #2d0565;" HBox.hgrow="ALWAYS" />
+>>>>>>> origin
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -75,7 +93,11 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+<<<<<<< HEAD
                         <TextField fx:id="txtSubject" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+=======
+                        <TextField fx:id="txtSubject" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: Maths" style="-fx-border-color: #2d0565;" HBox.hgrow="ALWAYS" />
+>>>>>>> origin
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -85,7 +107,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="lstSubjects" prefHeight="80.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+                        <ListView fx:id="lstSubjects" prefHeight="80.0" prefWidth="600.0" style="-fx-border-color: #2d0565;" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -95,7 +117,11 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+<<<<<<< HEAD
                         <TextField fx:id="txtContact" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+=======
+                        <TextField fx:id="txtContact" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="600.0" promptText="Eg: 07X-XXXXXXX" style="-fx-border-color: #2d0565;" HBox.hgrow="ALWAYS" />
+>>>>>>> origin
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -105,7 +131,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="lstContacts" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+                        <ListView fx:id="lstContacts" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="600.0" style="-fx-border-color: #2d0565;" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="124.0" prefWidth="804.0" spacing="25.0" VBox.vgrow="ALWAYS">
@@ -126,7 +152,7 @@
                         </TableView>
                      </children>
                   </HBox>
-                  <Label text="Teachers Table" VBox.vgrow="ALWAYS">
+                  <Label text="Teachers Table" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -142,7 +168,7 @@
                   </TableView>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label alignment="TOP_RIGHT" prefHeight="16.0" prefWidth="192.0" text="Search Teacher:" HBox.hgrow="ALWAYS">
+                        <Label alignment="TOP_RIGHT" prefHeight="16.0" prefWidth="192.0" text="Search Teacher:" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -159,6 +185,7 @@
                         <ImageView fx:id="imgPicture" fitHeight="200.0" fitWidth="218.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </StackPane>
+<<<<<<< HEAD
                   <HBox spacing="30.0">
                      <children>
                         <Button fx:id="btnBrowseImage" mnemonicParsing="false" onAction="#btnBrowseImageOnAction" text="Browse Image" />
@@ -166,6 +193,11 @@
                      </children>
                   </HBox>
                   <Button fx:id="btnAddSubject" disable="true" mnemonicParsing="false" onAction="#btnAddSubjectOnAction" prefHeight="24.0" prefWidth="123.0" text="Add Subject">
+=======
+                  <Button fx:id="btnAddSubject" mnemonicParsing="false" onAction="#btnAddSubjectOnAction" prefHeight="24.0" prefWidth="123.0" text="Add Subject" />
+                  <Button fx:id="btnDeleteSubject" mnemonicParsing="false" onAction="#btnDeleteSubjectOnAction" prefHeight="24.0" prefWidth="123.0" style="-fx-background-color: red;" text="Delete Subject" textFill="WHITE" />
+                  <Button fx:id="btnAddContact" mnemonicParsing="false" onAction="#btnAddContactOnAction" prefHeight="24.0" prefWidth="123.0" text="Add Contact">
+>>>>>>> origin
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin></Button>
@@ -175,8 +207,13 @@
                         <Insets top="65.0" />
                      </VBox.margin>
                   </Button>
+<<<<<<< HEAD
                   <Button fx:id="btnDeleteContact" disable="true" mnemonicParsing="false" onAction="#btnDeleteContact" prefHeight="24.0" prefWidth="123.0" text="Delete Contact" />
                   <Label text="User Name:">
+=======
+                  <Button fx:id="btnDeleteContact" mnemonicParsing="false" onAction="#btnDeleteContact" prefHeight="24.0" prefWidth="123.0" style="-fx-background-color: red;" text="Delete Contact" textFill="WHITE" />
+                  <Label text="User Name:" textFill="WHITE">
+>>>>>>> origin
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -184,8 +221,13 @@
                         <Insets top="210.0" />
                      </VBox.margin>
                   </Label>
+<<<<<<< HEAD
                   <TextField fx:id="txtUserName" disable="true" />
                   <Label text="Password:">
+=======
+                  <TextField fx:id="txtUserName" />
+                  <Label text="Password:" textFill="WHITE">
+>>>>>>> origin
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -194,8 +236,13 @@
                   <Button fx:id="btnChange" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#btnChangeOnAction" text="Change User Name &amp; Password" />
                   <HBox spacing="40.0">
                      <children>
+<<<<<<< HEAD
                         <Button fx:id="btnSave" disable="true" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="24.0" prefWidth="90.0" text="SAVE" />
                         <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="24.0" prefWidth="90.0" text="DELETE" />
+=======
+                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="24.0" prefWidth="90.0" text="SAVE" />
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="24.0" prefWidth="90.0" style="-fx-background-color: red;" text="DELETE" textFill="WHITE" />
+>>>>>>> origin
                      </children>
                   </HBox>
                </children>
