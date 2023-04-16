@@ -41,14 +41,14 @@ CREATE TABLE IF NOT EXISTS Results (
     english INT
 );
 
-CREATE TABLE Contacts (
+CREATE TABLE IF NOT EXISTS Contacts (
     contact VARCHAR(15) NOT NULL ,
     teacher_id VARCHAR(20) NOT NULL ,
     CONSTRAINT uk_contact UNIQUE KEY (contact) ,
     CONSTRAINT pk_contact PRIMARY KEY (contact, teacher_id)
 );
 
-CREATE TABLE Subjects (
+CREATE TABLE IF NOT EXISTS Subjects (
     subject VARCHAR(100) NOT NULL,
     teacher_id VARCHAR(20) NOT NULL,
     CONSTRAINT uk_subject UNIQUE KEY (subject),
@@ -58,7 +58,7 @@ CREATE TABLE Subjects (
 CREATE TABLE IF NOT EXISTS TeacherPicture(
     teacher_id VARCHAR(20) PRIMARY KEY ,
     picture MEDIUMBLOB NOT NULL ,
-    CONSTRAINT fk_teacher_picture FOREIGN KEY (teacher_id) REFERENCES Teacher(id)
+    CONSTRAINT fk_teacher_picture FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id)
 );
 
 ALTER TABLE Results ADD CONSTRAINT fk_result FOREIGN KEY (student_id) REFERENCES Student (student_id);

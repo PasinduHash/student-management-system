@@ -1,5 +1,6 @@
 package lk.ijse.dep10.students.controller;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -89,6 +90,28 @@ public class TeachersDetailViewController {
         tblTeachersDetails.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("contacts"));
 
         loadAllTeachers();
+
+        btnDelete.setDisable(true);
+        tblTeachersDetails.getSelectionModel().selectedItemProperty().addListener((ov, prev, current) -> {
+            btnDelete.setDisable(current == null);
+            if (current == null) return;
+
+            txtID.setText(current.getId());
+            txtName.setText(current.getName());
+            txtClass.setText(current.getGrade());
+            txtUserName.setText(current.getUserName());
+            pwdPassword.setText(current.getPassword());
+            lstSubjects.setItems((ObservableList<String>) current.getSubjectList());
+            lstContacts.setItems((ObservableList<String>) current.getContactList());
+
+            if (current.getPicture() != null) {
+                Image studentImage = current.getPicture().getImage();
+                imgPicture.setImage(studentImage);
+                btnDeleteImage.setDisable(false);
+            } else {
+                btnDeleteImage.fire();
+            }
+        });
     }
 
     private void loadAllTeachers() {
@@ -99,6 +122,7 @@ public class TeachersDetailViewController {
             ResultSet rst = stm.executeQuery("SELECT * FROM Teacher");
             PreparedStatement stm2 = connection.prepareStatement("SELECT * FROM Subjects WHERE teacher_id = ?");
             PreparedStatement stm3 = connection.prepareStatement("SELECT * FROM Contacts WHERE teacher_id = ?");
+            PreparedStatement stm4 = connection.prepareStatement("SELECT * FROM TeacherPicture WHERE teacher_id = ?");
 
             while (rst.next()) {
                 String id = rst.getString("teacher_id");
@@ -108,7 +132,6 @@ public class TeachersDetailViewController {
                 ArrayList<String> subjectList = new ArrayList<>();
                 String userName = rst.getString("user_name");
                 String password = rst.getString("password");
-                Image image = rst
                 stm2.setString(1, id);
                 stm3.setString(1, id);
                 ResultSet rstContacts = stm2.executeQuery();
@@ -121,7 +144,13 @@ public class TeachersDetailViewController {
                     String subject = rstSubjects.getString("subject");
                     subjectList.add(subject);
                 }
-                Teacher teacher = new Teacher(id, name, grade, subjectList, contactList, userName, password);
+                ImageView picture = null;
+                stm4.setString(1, id);
+                ResultSet rstPicture = stm4.executeQuery();
+                if (rstPicture.next()) {
+                    picture = new ImageView(new Image((rstPicture.getBlob("picture").getBinaryStream())));
+                }
+                Teacher teacher = new Teacher(id, name, grade, subjectList, contactList, picture, userName, password);
                 tblTeachersDetails.getItems().add(teacher);
             }
         } catch (SQLException e) {
@@ -191,7 +220,9 @@ public class TeachersDetailViewController {
     }
 
     public void btnDeleteImageOnAction(ActionEvent actionEvent) {
-        
+        Image image = new Image("/image/empty-photo.png");
+        imgPicture.setImage(image);
+        btnDeleteImage.setDisable(true);
     }
 
     private String autoGenerateId() {
