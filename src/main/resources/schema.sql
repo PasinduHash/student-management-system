@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS Student (
     address VARCHAR(300) NOT NULL,
     contact VARCHAR(15),
     guardian_name VARCHAR(200) NOT NULL,
-    guardian_occupation VARCHAR(100) NOT NULL
+    guardian_occupation VARCHAR(100) NOT NULL,
+    guardian_contact VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Picture (

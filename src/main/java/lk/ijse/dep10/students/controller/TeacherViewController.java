@@ -1,5 +1,6 @@
 package lk.ijse.dep10.students.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
@@ -46,5 +47,30 @@ public class TeacherViewController {
 
     @FXML
     private TextField txtTeacherName;
+    public void initialize(){
+
+
+
+    }
+
+    @FXML
+    void btnAddMarksOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnLibraryRecordOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnLogOutOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnMoreInfoOnAction(ActionEvent event) {
+
+    }
 
 }
