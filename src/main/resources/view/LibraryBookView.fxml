@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="932.0" prefWidth="1210.0" stylesheets="@../css/LibraryBookViewStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.LibraryBookViewController">
     <children>
         <Label alignment="CENTER" layoutX="289.0" layoutY="7.0" prefHeight="31.0" prefWidth="569.0" text="LIBRARY MANAGEMENT SYSTEM">
@@ -115,12 +114,6 @@
                         </HBox>
                         <HBox prefHeight="40.0" prefWidth="593.0">
                             <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Address :" />
-                                <TextField fx:id="txtMemberAddress" prefHeight="40.0" prefWidth="409.0" />
-                            </children>
-                        </HBox>
-                        <HBox prefHeight="40.0" prefWidth="593.0">
-                            <children>
                                 <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Contact No :" />
                                 <TextField fx:id="txtMemberContact" prefHeight="40.0" prefWidth="409.0" />
                             </children>
@@ -143,14 +136,11 @@
             <children>
                 <TableView fx:id="tblLibrary" layoutY="63.0" prefHeight="823.0" prefWidth="605.0">
                     <columns>
-                        <TableColumn prefWidth="70.0" text="Book ID" />
-                        <TableColumn prefWidth="58.0" text="Name" />
-                        <TableColumn prefWidth="63.0" text="Author" />
-                        <TableColumn prefWidth="76.0" text="Catogery" />
-                        <TableColumn prefWidth="61.0" text="Status" />
-                        <TableColumn prefWidth="90.0" text="Date Due" />
-                        <TableColumn prefWidth="107.0" text="Member Type" />
-                        <TableColumn prefWidth="75.0" text="Member Name" />
+                        <TableColumn prefWidth="112.0" text="Book ID" />
+                        <TableColumn prefWidth="119.0" text="Name" />
+                        <TableColumn prefWidth="106.0" text="Author" />
+                        <TableColumn prefWidth="121.0" text="Status" />
+                        <TableColumn prefWidth="146.0" text="Date Due" />
                     </columns>
                 </TableView>
                 <TextField fx:id="txtSearch" layoutY="5.0" prefHeight="41.0" prefWidth="510.0" />
