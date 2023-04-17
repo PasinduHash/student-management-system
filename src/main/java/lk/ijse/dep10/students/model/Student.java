@@ -23,5 +23,10 @@ public class Student implements Serializable {
     private String guardianOccupation;
     private Image profilePicture;
 
+    public Student(String id, String fullName, String contact) {
+        this.id = id;
+        this.fullName = fullName;
+        this.contact = contact;
+    }
 }
 
