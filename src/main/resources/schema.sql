@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS Teacher (
     id VARCHAR(20) PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
     class VARCHAR(5) NOT NULL,
-    picture MEDIUMBLOB NOT NULL,
     user_name VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL
 );

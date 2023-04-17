@@ -246,15 +246,15 @@ public class TeachersDetailViewController {
     @FXML
     void btnDeleteSubjectOnAction(ActionEvent event) {
 
-        String selectedContact = lstContacts.getSelectionModel().getSelectedItem();
-        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, String.format("Are you sure to delete the contact number: %s ?", selectedContact), ButtonType.YES, ButtonType.NO);
+        String selectedSubject = lstSubjects.getSelectionModel().getSelectedItem();
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, String.format("Are you sure to delete the subject: %s ?", selectedSubject), ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> optButton = confirmAlert.showAndWait();
 
         if (optButton.isEmpty() || optButton.get() == ButtonType.NO) return;
 
-        lstContacts.getItems().remove(selectedContact);
-        lstContacts.getSelectionModel().clearSelection();
-        txtContact.requestFocus();
+        lstSubjects.getItems().remove(selectedSubject);
+        lstSubjects.getSelectionModel().clearSelection();
+        txtSubject.requestFocus();
     }
 
     @FXML
