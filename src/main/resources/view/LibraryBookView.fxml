@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="932.0" prefWidth="1210.0" stylesheets="@../css/LibraryBookViewStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.LibraryBookViewController">
+    <children>
+        <Label alignment="CENTER" layoutX="289.0" layoutY="7.0" prefHeight="31.0" prefWidth="569.0" text="LIBRARY MANAGEMENT SYSTEM">
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
+        <AnchorPane layoutX="-3.0" layoutY="51.0" prefHeight="885.0" prefWidth="605.0">
+            <children>
+                <VBox layoutX="3.0" layoutY="-2.0" prefHeight="823.0" prefWidth="593.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="30.0" prefWidth="174.0" text="BOOK DETAILS">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                        </Label>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Book ID :" />
+                                <TextField fx:id="txtBookID" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Name :" />
+                                <TextField fx:id="txtBookName" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Author :" />
+                                <TextField fx:id="txtBookAuthor" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Category :" />
+                                <ComboBox fx:id="cmbBookCategory" prefHeight="40.0" prefWidth="207.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Status :" />
+                                <ComboBox fx:id="cmbBookStatus" prefHeight="40.0" prefWidth="207.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Date Borrowed :" />
+                                <DatePicker fx:id="dtpDateBorrowed" prefHeight="40.0" prefWidth="207.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Date Due :" />
+                                <DatePicker fx:id="dtpDateDue" prefHeight="40.0" prefWidth="207.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Days On Loan :" />
+                                <TextField fx:id="txtDaysOnLoan" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Days Overdue :" />
+                                <TextField fx:id="txtDaysOverdue" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Late Return Fine :" />
+                                <TextField fx:id="txtLateReturnFine" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                        <Label prefHeight="30.0" prefWidth="300.0" text="MEMBERSHIP DETAILS">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                        </Label>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Member Type :" />
+                                <ComboBox fx:id="cmbMemberType" prefHeight="40.0" prefWidth="207.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Index No :" />
+                                <TextField fx:id="txtMemberIndex" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Name :" />
+                                <TextField fx:id="txtMemberName" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Address :" />
+                                <TextField fx:id="txtMemberAddress" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="593.0">
+                            <children>
+                                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="120.0" text="Contact No :" />
+                                <TextField fx:id="txtMemberContact" prefHeight="40.0" prefWidth="409.0" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <HBox layoutX="4.0" layoutY="842.0" prefHeight="57.0" prefWidth="593.0" spacing="30.0">
+                    <children>
+                        <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="41.0" prefWidth="143.0" text="ADD" />
+                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="41.0" prefWidth="143.0" text="SAVE" />
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="41.0" prefWidth="143.0" text="DELETE" />
+                    </children>
+                    <padding>
+                        <Insets left="100.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="602.0" layoutY="51.0" prefHeight="885.0" prefWidth="605.0">
+            <children>
+                <TableView fx:id="tblLibrary" layoutY="63.0" prefHeight="823.0" prefWidth="605.0">
+                    <columns>
+                        <TableColumn prefWidth="70.0" text="Book ID" />
+                        <TableColumn prefWidth="58.0" text="Name" />
+                        <TableColumn prefWidth="63.0" text="Author" />
+                        <TableColumn prefWidth="76.0" text="Catogery" />
+                        <TableColumn prefWidth="61.0" text="Status" />
+                        <TableColumn prefWidth="90.0" text="Date Due" />
+                        <TableColumn prefWidth="107.0" text="Member Type" />
+                        <TableColumn prefWidth="75.0" text="Member Name" />
+                    </columns>
+                </TableView>
+                <TextField fx:id="txtSearch" layoutY="5.0" prefHeight="41.0" prefWidth="510.0" />
+                <Button fx:id="btnSearch" layoutX="517.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="41.0" prefWidth="84.0" text="SEARCH" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

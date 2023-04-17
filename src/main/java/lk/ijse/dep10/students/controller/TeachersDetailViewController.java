@@ -7,12 +7,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import lk.ijse.dep10.students.db.DBConnection;
 import lk.ijse.dep10.students.model.Teacher;
 
 import java.awt.print.Book;
+import java.io.File;
+import java.net.MalformedURLException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TeachersDetailViewController {
 
@@ -112,6 +118,13 @@ public class TeachersDetailViewController {
                 btnDeleteImage.fire();
             }
         });
+
+        lstContacts.getSelectionModel().selectedItemProperty().addListener((ov, prev, current) -> {
+            btnDeleteContact.setDisable(current == null);
+        });
+        lstSubjects.getSelectionModel().selectedItemProperty().addListener((ov, prev, current) -> {
+            btnDeleteSubject.setDisable(current == null);
+        });
     }
 
     private void loadAllTeachers() {
@@ -162,21 +175,67 @@ public class TeachersDetailViewController {
     @FXML
     void btnAddContactOnAction(ActionEvent event) {
 
+        txtContact.getStyleClass().remove("invalid");
+
+        String contact = txtContact.getText().strip();
+
+        Pattern patternContact = Pattern.compile("\\d{3}-\\d{7}$");
+        Matcher matcherContact = patternContact.matcher(contact);
+
+        if (!matcherContact.matches() || lstContacts.getItems().contains(contact)) {
+            txtContact.getStyleClass().add("invalid");
+            txtContact.selectAll();
+            txtContact.requestFocus();
+        } else {
+            txtContact.getStyleClass().remove("invalid");
+            ObservableList<String> contacts = lstContacts.getItems();
+            contacts.add(contact);
+            txtContact.clear();
+            txtContact.requestFocus();
+        }
     }
 
     @FXML
     void btnAddSubjectOnAction(ActionEvent event) {
 
+        txtSubject.getStyleClass().remove("invalid");
+
+        String subject = txtSubject.getText().strip();
+
+        Pattern patternSubject = Pattern.compile("\\w{3,}$");
+        Matcher matcherSubject = patternSubject.matcher(subject);
+
+        if (!matcherSubject.matches() || lstSubjects.getItems().contains(subject)) {
+            txtSubject.getStyleClass().add("invalid");
+            txtSubject.selectAll();
+            txtSubject.requestFocus();
+        } else {
+            txtSubject.getStyleClass().remove("invalid");
+            ObservableList<String> subjects = lstSubjects.getItems();
+            subjects.add(subject);
+            txtSubject.clear();
+            txtSubject.requestFocus();
+        }
     }
 
     @FXML
     void btnChangeOnAction(ActionEvent event) {
-
+        txtUserName.setDisable(false);
+        pwdPassword.setDisable(false);
     }
 
     @FXML
     void btnDeleteContact(ActionEvent event) {
 
+        String selectedSubject = lstSubjects.getSelectionModel().getSelectedItem();
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, String.format("Are you sure to delete the subject: %s ?", selectedSubject), ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> optButton = confirmAlert.showAndWait();
+
+        if (optButton.isEmpty() || optButton.get() == ButtonType.NO) return;
+
+        lstSubjects.getItems().remove(selectedSubject);
+        lstSubjects.getSelectionModel().clearSelection();
+        txtSubject.requestFocus();
     }
 
     @FXML
@@ -187,6 +246,15 @@ public class TeachersDetailViewController {
     @FXML
     void btnDeleteSubjectOnAction(ActionEvent event) {
 
+        String selectedContact = lstContacts.getSelectionModel().getSelectedItem();
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, String.format("Are you sure to delete the contact number: %s ?", selectedContact), ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> optButton = confirmAlert.showAndWait();
+
+        if (optButton.isEmpty() || optButton.get() == ButtonType.NO) return;
+
+        lstContacts.getItems().remove(selectedContact);
+        lstContacts.getSelectionModel().clearSelection();
+        txtContact.requestFocus();
     }
 
     @FXML
@@ -208,6 +276,15 @@ public class TeachersDetailViewController {
         txtContact.clear();
         lstSubjects.getItems().clear();
         lstContacts.getItems().clear();
+        txtUserName.clear();
+        pwdPassword.clear();
+
+        txtName.getStyleClass().remove("invalid");
+        txtClass.getStyleClass().remove("invalid");
+        txtSubject.getStyleClass().remove("invalid");
+        txtContact.getStyleClass().remove("invalid");
+        txtUserName.getStyleClass().remove("invalid");
+        pwdPassword.getStyleClass().remove("invalid");
     }
 
     @FXML
@@ -215,8 +292,17 @@ public class TeachersDetailViewController {
 
     }
 
-    public void btnBrowseImageOnAction(ActionEvent actionEvent) {
-        
+    public void btnBrowseImageOnAction(ActionEvent actionEvent) throws MalformedURLException {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select a Picture for the Teacher");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png", "*.gif", "*.bmp"));
+        File file = fileChooser.showOpenDialog(btnBrowseImage.getScene().getWindow());
+        if (file != null){
+            Image image = new Image(file.toURI().toURL().toString(), 240.0, 200.0, true, true);
+            imgPicture.setImage(image);
+            btnDeleteImage.setDisable(false);
+        }
     }
 
     public void btnDeleteImageOnAction(ActionEvent actionEvent) {
