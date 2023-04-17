@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="655.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.LibraryRecordViewController">
+   <children>
+      <Label layoutX="42.0" layoutY="48.0" prefHeight="61.0" prefWidth="348.0" text="LIBRARY RECORD">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <VBox layoutX="42.0" layoutY="119.0" prefHeight="81.0" prefWidth="725.0" spacing="10.0">
+         <children>
+            <HBox prefHeight="28.0" prefWidth="689.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="200.0" text="INDEX NO :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblIndexNo" prefHeight="21.0" prefWidth="524.0" text=" S001" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="689.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="200.0" text="STUDENT NAME :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblName" prefHeight="21.0" prefWidth="524.0" text=" AMILA KASUN" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <TableView fx:id="tblBookList" layoutX="50.0" layoutY="230.0" prefHeight="375.0" prefWidth="731.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+         <columns>
+            <TableColumn prefWidth="65.0" text="Book ID" />
+            <TableColumn prefWidth="190.0" text="Book Title" />
+            <TableColumn prefWidth="230.0" text="Author" />
+            <TableColumn prefWidth="154.0" text="Date Borrowd" />
+            <TableColumn prefWidth="150.0" text="Date Returned" />
+            <TableColumn prefWidth="116.0" text="Comments" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

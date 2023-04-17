@@ -206,22 +206,22 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="btnMoreInfo" layoutX="86.0" layoutY="686.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="167.0" text="MORE INFO">
+      <Button fx:id="btnMoreInfo" layoutX="86.0" layoutY="686.0" mnemonicParsing="false" onAction="#btnMoreInfoOnAction" prefHeight="40.0" prefWidth="167.0" text="MORE INFO">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnAddMarks" layoutX="303.0" layoutY="686.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="167.0" text="ADD MARKS">
+      <Button fx:id="btnAddMarks" layoutX="303.0" layoutY="686.0" mnemonicParsing="false" onAction="#btnAddMarksOnAction" prefHeight="40.0" prefWidth="167.0" text="ADD MARKS">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnLibraryRecord" layoutX="86.0" layoutY="755.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="167.0" text="LIBRARY RECORD">
+      <Button fx:id="btnLibraryRecord" layoutX="86.0" layoutY="755.0" mnemonicParsing="false" onAction="#btnLibraryRecordOnAction" prefHeight="40.0" prefWidth="167.0" text="LIBRARY RECORD">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnLogOut" layoutX="303.0" layoutY="755.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="167.0" text="LOG OUT">
+      <Button fx:id="btnLogOut" layoutX="303.0" layoutY="755.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="40.0" prefWidth="167.0" text="LOG OUT">
          <font>
             <Font size="16.0" />
          </font>
