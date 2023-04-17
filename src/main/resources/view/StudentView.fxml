@@ -18,7 +18,8 @@
 
 <AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" styleClass="body" stylesheets="@../css/Styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.StudentViewController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="692.0" layoutX="10.0" layoutY="134.0" opacity="0.86" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-arc-width: 30px; -fx-arc-height: 30px;" width="591.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="130.0" />
+      <Pane layoutX="16.0" layoutY="131.0" prefHeight="693.0" prefWidth="591.0" styleClass="card" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="692.0" layoutX="20.0" layoutY="140.0" opacity="0.86" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-arc-width: 30px; -fx-arc-height: 30px;" visible="false" width="591.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="63.0" text="STUDENT DETAILS - ABC PRIMARY SCHOOL" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="FreeSans Bold" size="27.0" />

@@ -59,11 +59,11 @@ CREATE TABLE IF NOT EXISTS Subjects (
 CREATE TABLE IF NOT EXISTS TeacherPicture(
     teacher_id VARCHAR(20) PRIMARY KEY ,
     picture MEDIUMBLOB NOT NULL ,
-    CONSTRAINT fk_teacher_picture FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id)
+    CONSTRAINT fk_teacher_picture FOREIGN KEY (teacher_id) REFERENCES Teacher(id)
 );
 
-ALTER TABLE Results ADD CONSTRAINT fk_result FOREIGN KEY (student_id) REFERENCES Student (student_id);
+ALTER TABLE Results ADD CONSTRAINT fk_result FOREIGN KEY (student_id) REFERENCES Student (id);
 
-ALTER TABLE Contacts ADD CONSTRAINT fk_contact FOREIGN KEY (teacher_id) REFERENCES Teacher (teacher_id);
+ALTER TABLE Contacts ADD CONSTRAINT fk_contact FOREIGN KEY (teacher_id) REFERENCES Teacher (id);
 
-ALTER TABLE Subjects ADD CONSTRAINT fk_subject FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id);
+ALTER TABLE Subjects ADD CONSTRAINT fk_subject FOREIGN KEY (teacher_id) REFERENCES Teacher(id);

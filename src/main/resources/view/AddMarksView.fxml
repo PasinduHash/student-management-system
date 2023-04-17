@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="758.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.AddMarksViewController">
    <children>
       <TableView layoutX="35.0" layoutY="382.0" onSort="#tblStudents" prefHeight="335.0" prefWidth="801.0">
@@ -52,7 +51,7 @@
             </HBox>
             <HBox prefHeight="30.0" prefWidth="469.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="200.0" text="Sinhale :">
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="200.0" text="Sinhala :">
                      <font>
                         <Font size="18.0" />
                      </font>
