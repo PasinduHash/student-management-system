@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS Teacher (
     id VARCHAR(20) PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
     class VARCHAR(5) NOT NULL,
-    picture MEDIUMBLOB NOT NULL,
     user_name VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL
 );
@@ -70,4 +69,5 @@ ALTER TABLE Results ADD CONSTRAINT fk_result FOREIGN KEY (student_id) REFERENCES
 ALTER TABLE Contacts ADD CONSTRAINT fk_contact FOREIGN KEY (teacher_id) REFERENCES Teacher (id);
 
 ALTER TABLE Subjects ADD CONSTRAINT fk_subject FOREIGN KEY (teacher_id) REFERENCES Teacher(id);
+
 ALTER TABLE Library ADD CONSTRAINT fk_student_id FOREIGN KEY (student_id) REFERENCES Student(id);
