@@ -26,12 +26,15 @@ CREATE TABLE IF NOT EXISTS Teacher (
 );
 
 CREATE TABLE IF NOT EXISTS Library (
-    id VARCHAR(20) PRIMARY KEY,
+    book_id VARCHAR(20) PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
-    status ENUM('AVAILABLE', 'TAKEN') NOT NULL,
-    borrower_id VARCHAR(20),
-    borrowed_date DATE,
-    return_date DATE
+    author VARCHAR(100) NOT NULL,
+    category ENUM ('NOVEL','SCIENTIFIC','FICTION','EDUCATION','DOCUMENTS') NOT NULL,
+    date_borrowed DATE NOT NULL ,
+    date_due DATE NOT NULL ,
+    days_on_loan DATE NOT NULL ,
+    days_overdue DATE NOT NULL ,
+    student_id VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Results (
@@ -67,3 +70,4 @@ ALTER TABLE Results ADD CONSTRAINT fk_result FOREIGN KEY (student_id) REFERENCES
 ALTER TABLE Contacts ADD CONSTRAINT fk_contact FOREIGN KEY (teacher_id) REFERENCES Teacher (id);
 
 ALTER TABLE Subjects ADD CONSTRAINT fk_subject FOREIGN KEY (teacher_id) REFERENCES Teacher(id);
+ALTER TABLE Library ADD CONSTRAINT fk_student_id FOREIGN KEY (student_id) REFERENCES Student(id);
