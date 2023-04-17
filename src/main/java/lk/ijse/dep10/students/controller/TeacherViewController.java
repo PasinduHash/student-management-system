@@ -4,16 +4,24 @@ import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import lk.ijse.dep10.students.db.DBConnection;
 import lk.ijse.dep10.students.model.Student;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 
 public class TeacherViewController {
 
@@ -62,6 +70,31 @@ public class TeacherViewController {
         tblStudents.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("contact"));
         loadAllStudents();
 
+        txtSearch.textProperty().addListener((ov, previous, current) -> {
+            Connection connection = DBConnection.getInstance().getConnection();
+            try {
+                Statement stm = connection.createStatement();
+                String sql = "SELECT * FROM Student " +
+                        "WHERE Student.id LIKE  '%1$s'";
+                // sql = "SELECT * FROM Student WHERE first_name LIKE '%a%'";
+                sql = String.format(sql, "%" + current + "%");
+                ResultSet rst = stm.executeQuery(sql);
+
+                ObservableList<Student> studentList = tblStudents.getItems();
+                studentList.clear();
+
+                while (rst.next()){
+                    String id = rst.getString("id");
+                    String fullName = rst.getString("full_name");
+                    String contact = rst.getString("contact");
+
+                    studentList.add(new Student(id,fullName,contact));
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
 
 
 
@@ -95,12 +128,39 @@ public class TeacherViewController {
     }
 
     @FXML
-    void btnAddMarksOnAction(ActionEvent event) {
+    void btnAddMarksOnAction(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
 
+        URL fxmlFile = getClass().getResource("/view/AddMarks.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlFile);
+        AnchorPane root = fxmlLoader.load();
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(btnAddMarks.getScene().getWindow());
+        stage.setTitle("Mark Sheet");
+        stage.show();
+        stage.centerOnScreen();
     }
 
     @FXML
-    void btnLibraryRecordOnAction(ActionEvent event) {
+    void btnLibraryRecordOnAction(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+
+        URL fxmlFile = getClass().getResource("/view/LibraryRecordView.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlFile);
+        AnchorPane root = fxmlLoader.load();
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(btnAddMarks.getScene().getWindow());
+        stage.setTitle("Library Record");
+        stage.show();
+        stage.centerOnScreen();
 
     }
 
@@ -110,7 +170,21 @@ public class TeacherViewController {
     }
 
     @FXML
-    void btnMoreInfoOnAction(ActionEvent event) {
+    void btnMoreInfoOnAction(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+
+        URL fxmlFile = getClass().getResource("/view/StudentsInfoView.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlFile);
+        AnchorPane root = fxmlLoader.load();
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(btnAddMarks.getScene().getWindow());
+        stage.setTitle("Student Information");
+        stage.show();
+        stage.centerOnScreen();
 
     }
 

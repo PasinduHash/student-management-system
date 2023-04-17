@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS Library (
     date_due DATE NOT NULL ,
     days_on_loan DATE NOT NULL ,
     days_overdue DATE NOT NULL ,
+    status ENUM ('BORROWED','AVAILABLE')
     student_id VARCHAR(20) NOT NULL
 );
 

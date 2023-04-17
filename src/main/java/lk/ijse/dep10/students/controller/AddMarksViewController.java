@@ -3,6 +3,7 @@ package lk.ijse.dep10.students.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class AddMarksViewController {
@@ -12,6 +13,9 @@ public class AddMarksViewController {
 
     @FXML
     private Button btnSave;
+
+    @FXML
+    private TableView<?> tblStudents;
 
     @FXML
     private TextField txtEnglish;
@@ -32,17 +36,12 @@ public class AddMarksViewController {
     private TextField txtSinhala;
 
     @FXML
-    void btnBacjOnAction(ActionEvent event) {
+    void btnBackOnAction(ActionEvent event) {
 
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void tblStudents(ActionEvent event) {
 
     }
 

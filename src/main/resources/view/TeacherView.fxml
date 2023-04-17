@@ -112,7 +112,7 @@
           <TableColumn prefWidth="128.0" text="CONTACT" />
         </columns>
       </TableView>
-      <TextField fx:id="txtSearch" alignment="CENTER" layoutX="549.0" layoutY="47.0" prefHeight="30.0" prefWidth="595.0" promptText="Search Student">
+      <TextField fx:id="txtSearch" alignment="CENTER" layoutX="549.0" layoutY="47.0" prefHeight="30.0" prefWidth="595.0" promptText=" Search Student from ID">
          <font>
             <Font size="16.0" />
          </font>
