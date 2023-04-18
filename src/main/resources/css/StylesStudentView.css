@@ -1,0 +1,13 @@
+.body{
+    -fx-background-image: url("background.jpg");
+}
+.invalid{
+    -fx-border-color: red !important;
+    -fx-border-width: 1px;
+}
+#btnStudents{
+    -fx-background-color: aqua;
+}
+#btnTeachers{
+    -fx-background-color: aqua;
+}
