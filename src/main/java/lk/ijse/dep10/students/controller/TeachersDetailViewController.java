@@ -244,7 +244,52 @@ public class TeachersDetailViewController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        Teacher selectedTeacher = tblTeachersDetails.getSelectionModel().getSelectedItem();
+        Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to delete teacher with teacher id " + selectedTeacher.getId() + " ?", ButtonType.YES, ButtonType.NO).showAndWait();
+        if (buttonType.isPresent() && buttonType.get() == ButtonType.YES) {
+            Connection connection = DBConnection.getInstance().getConnection();
+            try {
+                connection.setAutoCommit(false);
+                PreparedStatement stmPicture = connection.prepareStatement("DELETE FROM TeacherPicture WHERE teacher_id = ?");
+                stmPicture.setString(1, selectedTeacher.getId());
+                PreparedStatement stmContact = connection.prepareStatement("DELETE FROM Contacts WHERE teacher_id = ?");
+                ArrayList<String> contactList = selectedTeacher.getContactList();
+                for (String contact : contactList) {
+                    stmContact.setString(1, selectedTeacher.getId());
+                    stmContact.executeUpdate();
+                }
+                PreparedStatement stmSubject = connection.prepareStatement("DELETE FROM Subjects WHERE teacher_id = ?");
+                ArrayList<String> subjectList = selectedTeacher.getSubjectList();
+                for (String subject : subjectList) {
+                    stmSubject.setString(1, selectedTeacher.getId());
+                    stmSubject.executeUpdate();
+                }
+                PreparedStatement stmTeacher = connection.prepareStatement("DELETE FROM Teacher WHERE id = ?");
+                stmTeacher.setString(1, selectedTeacher.getId());
+                stmPicture.executeUpdate();
+                stmTeacher.executeUpdate();
+                connection.commit();
 
+                tblTeachersDetails.getItems().remove(selectedTeacher);
+                tblTeachersDetails.getSelectionModel().clearSelection();
+                if (!tblTeachersDetails.getItems().isEmpty()) btnNewTeacher.fire();
+                connection.commit();
+            } catch (Throwable e) {
+                try {
+                    connection.rollback();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                e.printStackTrace();
+                new Alert(Alert.AlertType.ERROR, "Failed to delete the teacher. Try again!").show();
+            } finally {
+                try {
+                    connection.setAutoCommit(true);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     @FXML
