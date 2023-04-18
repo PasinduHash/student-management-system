@@ -108,24 +108,6 @@
                         <ListView fx:id="lstContacts" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="124.0" prefWidth="804.0" spacing="25.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label alignment="TOP_RIGHT" prefHeight="16.0" prefWidth="192.0" text="Borrowed Books:" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TableView fx:id="tblBooks" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="124.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
-                          <columns>
-                            <TableColumn prefWidth="81.0" text="Book ID" />
-                            <TableColumn prefWidth="181.0" text="Book Name" />
-                              <TableColumn prefWidth="140.0" text="Borrowed Date" />
-                              <TableColumn prefWidth="118.0" text="Return Date" />
-                              <TableColumn prefWidth="98.0" text="Status" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </HBox>
                   <Label text="Teachers Table" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="16.0" />
@@ -167,12 +149,12 @@
                   </HBox>
                   <Button fx:id="btnAddSubject" disable="true" mnemonicParsing="false" onAction="#btnAddSubjectOnAction" prefHeight="24.0" prefWidth="123.0" text="Add Subject">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="15.0" />
                      </VBox.margin></Button>
                   <Button fx:id="btnDeleteSubject" disable="true" mnemonicParsing="false" onAction="#btnDeleteSubjectOnAction" prefHeight="24.0" prefWidth="123.0" text="Delete Subject" />
                   <Button fx:id="btnAddContact" disable="true" mnemonicParsing="false" onAction="#btnAddContactOnAction" prefHeight="24.0" prefWidth="123.0" text="Add Contact">
                      <VBox.margin>
-                        <Insets top="45.0" />
+                        <Insets top="85.0" />
                      </VBox.margin>
                   </Button>
                   <Button fx:id="btnDeleteContact" disable="true" mnemonicParsing="false" onAction="#btnDeleteContact" prefHeight="24.0" prefWidth="123.0" text="Delete Contact" />
@@ -181,7 +163,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="210.0" />
+                        <Insets top="180.0" />
                      </VBox.margin>
                   </Label>
                   <TextField fx:id="txtUserName" disable="true" />
