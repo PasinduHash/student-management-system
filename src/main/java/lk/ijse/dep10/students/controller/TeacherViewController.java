@@ -1,6 +1,7 @@
 package lk.ijse.dep10.students.controller;
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,6 +64,8 @@ public class TeacherViewController {
 
     @FXML
     private TextField txtTeacherName;
+    private String studentId;
+
     public void initialize(){
         txtClass.setText("10-A");
         tblStudents.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -94,6 +97,14 @@ public class TeacherViewController {
                 throw new RuntimeException(e);
             }
         });
+        tblStudents.getSelectionModel().selectedItemProperty().addListener(((observable, previous, current) -> {
+            if (current==null) return;
+            studentId=current.getId();
+                System.out.println(studentId);
+                txtIndexNo.setText(current.getId());
+                txtStudentName.setText(current.getFullName());
+                txtStudentContactNo.setText(current.getContact());
+        }));
 
 
 
@@ -133,6 +144,7 @@ public class TeacherViewController {
 
         URL fxmlFile = getClass().getResource("/view/AddMarks.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlFile);
+
         AnchorPane root = fxmlLoader.load();
 
         Scene scene = new Scene(root);
@@ -151,7 +163,17 @@ public class TeacherViewController {
 
         URL fxmlFile = getClass().getResource("/view/LibraryRecordView.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlFile);
+
+
+        studentId=txtIndexNo.getText();
         AnchorPane root = fxmlLoader.load();
+        LibraryRecordViewController controller=fxmlLoader.getController();
+        System.out.println(controller);
+        controller.initData(studentId);
+        System.out.println(controller);
+
+
+
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
