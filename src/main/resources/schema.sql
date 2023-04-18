@@ -24,16 +24,22 @@ CREATE TABLE IF NOT EXISTS Teacher (
     password VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Library (
-    book_id VARCHAR(20) PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Book (
+    id VARCHAR(20) PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
     author VARCHAR(100) NOT NULL,
     category ENUM ('NOVEL','SCIENTIFIC','FICTION','EDUCATION','DOCUMENTS') NOT NULL,
+    status ENUM ('BORROWED','AVAILABLE') NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Library (
+    book_id VARCHAR(20) NOT NULL,
+    student_id VARCHAR(20) NOT NULL,
     date_borrowed DATE NOT NULL ,
     date_due DATE NOT NULL ,
-    days_on_loan DATE NOT NULL ,
-    days_overdue DATE NOT NULL ,
-    student_id VARCHAR(20) NOT NULL
+    status ENUM ('DUE','HANDED OVER'),
+    days_on_loan INT,
+    days_overdue INT
 );
 
 CREATE TABLE IF NOT EXISTS Results (
@@ -71,3 +77,7 @@ ALTER TABLE Contacts ADD CONSTRAINT fk_contact FOREIGN KEY (teacher_id) REFERENC
 ALTER TABLE Subjects ADD CONSTRAINT fk_subject FOREIGN KEY (teacher_id) REFERENCES Teacher(id);
 
 ALTER TABLE Library ADD CONSTRAINT fk_student_id FOREIGN KEY (student_id) REFERENCES Student(id);
+
+ALTER TABLE Library ADD CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES Book(id);
+
+ALTER TABLE Library ADD CONSTRAINT pk_book PRIMARY KEY (book_id,student_id,date_borrowed);

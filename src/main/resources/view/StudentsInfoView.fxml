@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="858.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.StudentsInfoViewController">
+<AnchorPane prefHeight="858.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.students.controller.StudentsInfoViewController">
    <children>
       <StackPane layoutX="110.0" layoutY="165.0" prefHeight="184.0" prefWidth="180.0" style="-fx-border-color: grey;">
          <children>
@@ -30,13 +30,13 @@
             <Font name="System Bold Italic" size="35.0" />
          </font>
       </Label>
-      <VBox layoutX="62.0" layoutY="399.0" prefHeight="297.0" prefWidth="834.0" spacing="15.0">
+      <VBox layoutX="62.0" layoutY="399.0" prefHeight="348.0" prefWidth="809.0" spacing="15.0">
          <children>
             <HBox prefHeight="33.0" prefWidth="624.0">
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="260.0" text="STUDENT'S FULL NAME :">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <TextArea fx:id="txtFullName" prefHeight="70.0" prefWidth="574.0">
@@ -56,7 +56,7 @@
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="260.0" text="ADDRESS :">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <TextArea fx:id="txtAddress" prefHeight="70.0" prefWidth="574.0" HBox.hgrow="ALWAYS">
@@ -76,7 +76,7 @@
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="260.0" text="GUARDIAN'S NAME :">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <TextField fx:id="txtGuardianName" HBox.hgrow="ALWAYS" />
@@ -92,7 +92,7 @@
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="260.0" text="GUARDIAN'S OCCUPATION :">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <TextField fx:id="txtGuardianOccupation" HBox.hgrow="ALWAYS" />
@@ -108,7 +108,7 @@
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="260.0" text="GUARDIAN'S CONTACT :">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <TextField fx:id="txtGuardianContact" HBox.hgrow="ALWAYS" />
@@ -125,13 +125,13 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <VBox layoutX="304.0" layoutY="194.0" prefHeight="129.0" prefWidth="586.0" spacing="25.0">
+      <VBox layoutX="304.0" layoutY="194.0" prefHeight="129.0" prefWidth="547.0" spacing="25.0">
          <children>
             <HBox prefHeight="33.0" prefWidth="403.0">
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="190.0" text="INDEX NO :" textAlignment="RIGHT">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="16.0" />
                      </font>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -154,7 +154,7 @@
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="190.0" text="STUDENT NAME :" textAlignment="RIGHT">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="16.0" />
                      </font>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -165,7 +165,7 @@
                   </Label>
                   <TextField fx:id="txtName" prefHeight="4.0" prefWidth="253.0" HBox.hgrow="ALWAYS">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="5.0" />

@@ -107,12 +107,12 @@
       </VBox>
       <TableView fx:id="tblStudents" layoutX="549.0" layoutY="117.0" prefHeight="694.0" prefWidth="595.0">
         <columns>
-            <TableColumn prefWidth="83.0" text="NO" />
-          <TableColumn minWidth="7.0" prefWidth="138.0" text="INDEX NO" />
-          <TableColumn prefWidth="448.0" text="STUDENT NAME" />
+            <TableColumn prefWidth="113.0" text="INDEX NO" />
+          <TableColumn minWidth="7.0" prefWidth="353.0" text="STUDENT NAME" />
+          <TableColumn prefWidth="128.0" text="CONTACT" />
         </columns>
       </TableView>
-      <TextField fx:id="txtSearch" alignment="CENTER" layoutX="549.0" layoutY="47.0" prefHeight="30.0" prefWidth="595.0" promptText="Search Student">
+      <TextField fx:id="txtSearch" alignment="CENTER" layoutX="549.0" layoutY="47.0" prefHeight="30.0" prefWidth="595.0" promptText=" Search Student from ID">
          <font>
             <Font size="16.0" />
          </font>
