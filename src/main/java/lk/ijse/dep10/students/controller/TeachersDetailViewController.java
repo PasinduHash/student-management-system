@@ -1,6 +1,7 @@
 package lk.ijse.dep10.students.controller;
 
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -9,9 +10,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import lk.ijse.dep10.students.db.DBConnection;
+import lk.ijse.dep10.students.model.Student;
 import lk.ijse.dep10.students.model.Teacher;
+import lk.ijse.dep10.students.util.PasswordEncoder;
 
+import javax.imageio.ImageIO;
+import javax.sql.rowset.serial.SerialBlob;
+import java.awt.image.BufferedImage;
 import java.awt.print.Book;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.sql.*;
@@ -59,9 +66,6 @@ public class TeachersDetailViewController {
 
     @FXML
     private PasswordField pwdPassword;
-
-    @FXML
-    private TableView<Book> tblBooks;
 
     @FXML
     private TableView<Teacher> tblTeachersDetails;
@@ -246,15 +250,15 @@ public class TeachersDetailViewController {
     @FXML
     void btnDeleteSubjectOnAction(ActionEvent event) {
 
-        String selectedContact = lstContacts.getSelectionModel().getSelectedItem();
-        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, String.format("Are you sure to delete the contact number: %s ?", selectedContact), ButtonType.YES, ButtonType.NO);
+        String selectedSubject = lstSubjects.getSelectionModel().getSelectedItem();
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, String.format("Are you sure to delete the subject: %s ?", selectedSubject), ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> optButton = confirmAlert.showAndWait();
 
         if (optButton.isEmpty() || optButton.get() == ButtonType.NO) return;
 
-        lstContacts.getItems().remove(selectedContact);
-        lstContacts.getSelectionModel().clearSelection();
-        txtContact.requestFocus();
+        lstSubjects.getItems().remove(selectedSubject);
+        lstSubjects.getSelectionModel().clearSelection();
+        txtSubject.requestFocus();
     }
 
     @FXML
@@ -290,6 +294,67 @@ public class TeachersDetailViewController {
     @FXML
     void btnSaveOnAction(ActionEvent event) {
 
+        if (!isDataValid()) return;
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            PreparedStatement stmTeacher = connection.prepareStatement("INSERT INTO Teacher (id, name, class, user_name, password) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement stmTeacherSubjects = connection.prepareStatement("INSERT INTO Subjects (teacher_id, subject) VALUES (?, ?)");
+            PreparedStatement stmTeacherContacts = connection.prepareStatement("INSERT INTO Contacts (teacher_id, contact) VALUES (?, ?)");
+            PreparedStatement stmTeacherPicture = connection.prepareStatement("INSERT INTO TeacherPicture (teacher_id, picture) VALUES (?, ?)");
+
+            connection.setAutoCommit(false);
+
+            stmTeacher.setString(1, txtID.getText());
+            stmTeacher.setString(2, txtName.getText());
+            stmTeacher.setString(3, txtClass.getText());
+            stmTeacher.setString(4, txtUserName.getText());
+            stmTeacher.setString(5, PasswordEncoder.encode(pwdPassword.getText()));
+            stmTeacher.executeUpdate();
+
+            ObservableList<String> subjectList = lstSubjects.getItems();
+            ObservableList<String> contactList = lstContacts.getItems();
+
+            for (String subject : subjectList) {
+                stmTeacherSubjects.setString(1, txtID.getText());
+                stmTeacherSubjects.setString(2, subject);
+                stmTeacherSubjects.executeUpdate();
+            }
+            for (String contact : contactList) {
+                stmTeacherContacts.setString(1, txtID.getText());
+                stmTeacherContacts.setString(2, contact);
+                stmTeacherSubjects.executeUpdate();
+            }
+
+            Teacher newTeacher = new Teacher(txtID.getText(), txtName.getText(), txtClass.getText(), (ArrayList<String>) subjectList, (ArrayList<String>) contactList, null, txtUserName.getText(), pwdPassword.getText());
+
+            Image image = imgPicture.getImage();
+            if (image != null) {
+                /*nJavaFX Image -> Blob */
+                BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(bufferedImage, "png", baos);
+                byte[] bytes = baos.toByteArray();
+                Blob teacherPicture = new SerialBlob(bytes);
+
+                newTeacher.setPicture(new ImageView(new Image(teacherPicture.getBinaryStream())));
+                stmTeacherPicture.setString(1, txtID.getText());
+                stmTeacherPicture.setBlob(2, teacherPicture);
+                stmTeacherPicture.executeUpdate();
+            }
+            connection.commit();
+            tblTeachersDetails.getItems().add(newTeacher);
+            btnNewTeacher.fire();
+
+        } catch (Throwable e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            new Alert(Alert.AlertType.ERROR, "Failed to saved the Teacher. Try again!").show();
+            e.printStackTrace();
+        }
     }
 
     public void btnBrowseImageOnAction(ActionEvent actionEvent) throws MalformedURLException {
@@ -318,5 +383,9 @@ public class TeachersDetailViewController {
             newTeacherId = String.format("T%03d",(Integer.parseInt(lastTeacherId))+1);
         }
         return newTeacherId;
+    }
+
+    private boolean isDataValid() {
+        return true;
     }
 }
